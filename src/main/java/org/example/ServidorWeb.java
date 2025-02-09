@@ -48,8 +48,8 @@ final class SolicitudHttp implements Runnable {
 
     private void proceseSolicitud() throws Exception {
         // Referencia al stream de salida del socket.
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
+        //BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         // Referencia y filtros para el stream de entrada.
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -61,7 +61,20 @@ final class SolicitudHttp implements Runnable {
         // Recoge y muestra las líneas de header.
         while ((linea = in.readLine()) != null && !linea.isEmpty()) {
             System.out.println(linea);
+
         }
+
+        // Respuesta básica para el navegador
+        String respuesta = "HTTP/1.0 200 OK" + CRLF +
+                "Content-Type: text/html" + CRLF +
+                "Connection: close" + CRLF + CRLF +
+                "<html><body><h1>Hola, navegador!</h1></body></html>";
+
+        out.writeBytes(respuesta);
+
+        out.close();
+        in.close();
+        socket.close();
 
         // Cierra los streams y el socket.
         out.close();
