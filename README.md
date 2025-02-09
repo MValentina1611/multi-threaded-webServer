@@ -79,5 +79,5 @@ This project is a basic multi-threaded HTTP server implemented in Java. The serv
 - Make sure your `index.html` and `404.html` are placed in the `resources` folder.
 - To change the port, modify the server initialization code in `ServidorWeb.java`.
 
-Enjoy your lightweight Java HTTP server! 😄🌍
+
 
