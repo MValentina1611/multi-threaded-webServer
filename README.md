@@ -66,10 +66,13 @@ This project is a basic multi-threaded HTTP server implemented in Java. The serv
 │                   ├── ServidorWeb.java
 │                   └── SolicitudHttp.java
 └── resources
+    ├── image1.jpg
+    ├── image2.jpg
     ├── index.html
     ├── 404.html
     ├── gif1.gif
     └── 404.gif
+
 ```
 
 ## 💡 Notes
